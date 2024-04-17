@@ -95,7 +95,21 @@ describe('App e2e', () => {
           .expectStatus(200);
       });
     });
-    describe('Edit user', () => {});
+    describe('Edit user', () => {
+      it('Should edit user', () => {
+        return pactum
+          .spec()
+          .patch('/users')
+          .withHeaders({ Authorization: 'Bearer $S{userAt}' })
+          .withBody({
+            firstName: 'Zenyk',
+            lastName: 'Haiduk',
+            email: 'zenyuk@gmail.com',
+          })
+          .expectStatus(200)
+          .expectBodyContains('Zenyk');
+      });
+    });
   });
   describe('Bookmarks', () => {
     describe('Create bookmark', () => {});
