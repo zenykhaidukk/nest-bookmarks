@@ -32,10 +32,9 @@ model Bookmark {
   updatedAt   DateTime @updatedAt
   title       String
   description String?
-  ling        String?
-
-  userId Int
-  user   User @relation(fields: [userId], references: [id])
+  link        String?
+  userId      Int
+  user        User     @relation(fields: [userId], references: [id])
 
   @@map("bookmarks")
 }
